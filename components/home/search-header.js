@@ -5,7 +5,7 @@ import SearchBar from '../../components/coreui/search-bar/search-bar'
 // eslint-disable-next-line no-unused-vars
 function SearchHeader(props) {
   return (
-    <div id="search" className="m-w-row">
+    <div id="search" className="">
       <CContainer className="d-flex py-4" lg>
         <div id="logo" className="logo me-2">
           YOUR LOGO

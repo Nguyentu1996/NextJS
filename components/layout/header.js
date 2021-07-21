@@ -2,7 +2,7 @@ import { CContainer } from '@coreui/react'
 
 function Header() {
   return (
-    <div id="header" className="bg-orange-300 h-3 p-2 m-w-row ">
+    <div id="header" className="bg-orange-300 h-3 p-2">
       <CContainer className="d-flex justify-content-between align-items-center h-full" lg>
         <div id="lang">
           <ul className="list-inline pe-none text-white d-flex align-items-center m-0">

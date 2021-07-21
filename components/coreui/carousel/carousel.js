@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Image from 'next/image'
 import profilePic from '../../../public/images/na.jpg'
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper/core'

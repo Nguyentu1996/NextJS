@@ -1,6 +1,9 @@
 // pages/products/[id].js
 
+import { CContainer } from "@coreui/react";
 import { useRouter } from "next/router";
+import Breabcrumb from "../../components/coreui/breadcumb/breabcrumb";
+import ItemDetails from "../../components/item-details/item-details";
 
 // In getStaticPaths(), you need to return the list of
 // ids of product pages (/products/[id]) that you’d
@@ -8,9 +11,10 @@ import { useRouter } from "next/router";
 // you can fetch all products from a database.
 export async function getStaticPaths() {
   // const products = await getProductsFromDatabase()
-  const products = [];
+  const products = []
+
   const paths = products.map((product) => ({
-    params: { id: product.id }
+    params: { id: product }
   }))
 
   // fallback: false means pages that don’t have the
@@ -34,4 +38,13 @@ export default function Product({ product }) {
     return <div>Loading...</div>
   }
   // Render product
+  return (
+    <div className="bg-secondary-300">
+      <Breabcrumb />
+      <CContainer lg className="bg-white">
+        <ItemDetails />
+      </CContainer>
+    </div>
+  )
+  
 }

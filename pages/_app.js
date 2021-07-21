@@ -12,7 +12,7 @@ import '../styles/_utilities.css'
 import '../styles/_width.css'
 import '../styles/globals.css'
 import Layout from '../components/layout/layout.js'
-import Head from 'next/head'
+import Device from '../components/device'
 
 
 
@@ -27,22 +27,17 @@ function MyApp({ Component, pageProps }) {
 
 
   return (
-    <Layout>
-      <div>
-        <Head>
-          <title>Create Next App</title>
-          <link rel="icon" href="/favicon.ico" />
-          <meta name="description" content="Add a shopping cart to your site in minutes." />
-          <meta property="og:title" content="Thương mại điện tử by Tú kute" />
-          <meta property="og:description" content="Add a shopping cart to your site in minutes." />
-          <meta property="og:url" content="https://snipcart.com/" />
-          <meta property="og:type" content="website" />
-        </Head>
-        <main className="m-h-full">
-          <Component {...pageProps} />
-        </main>
-      </div>
-    </Layout>
+    <Device >
+      {({ isMobile }) =>
+        <Layout isMobile={isMobile}>
+          <div>
+            <main>
+              <Component {...pageProps} />
+            </main>
+          </div>
+        </Layout>
+      }
+    </Device>
   )
 }
 

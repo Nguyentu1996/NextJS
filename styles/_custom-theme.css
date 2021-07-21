@@ -224,7 +224,7 @@ object-fit: cover;
     top: 60%;
 } */
 .swiper-button-prev, .swiper-button-next {
-    height: 20px;
+    /* height: 20px; */
     /* top: 65% !important; */
 }
 .swiper-button-prev:after, .swiper-button-next:after {  

@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 function Footer() {
   return (
-    <div id="footer" className="m-w-row bg-secondary-300">
+    <div id="footer" className="bg-secondary-300">
       <CContainer lg className="pt-5">
         <CRow>
           <CCol lg={4} md={6}>

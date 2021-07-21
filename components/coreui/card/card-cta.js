@@ -5,7 +5,7 @@ import Item from './item'
 
 function CardCTA({ item }) {
   return (
-    <Link href={'/posts/post'} passHref>
+    <Link href={'/products/details'} passHref>
       <Item item={item}/>
     </Link>
   )

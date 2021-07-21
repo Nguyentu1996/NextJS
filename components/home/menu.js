@@ -10,7 +10,7 @@ function Menu() {
 
   return (
     <>
-      <div className="m-w-row">
+      <div className="">
         <CContainer lg>
           <ul className="list-inline cursor-pointer text-dark d-flex text-uppercase align-items-center py-3 m-0">
             {menuArray && menuArray.map((item, index) => (
