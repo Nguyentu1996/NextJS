@@ -7,3 +7,6 @@ export { BsChevronLeft } from 'react-icons/bs'
 export { BsChevronRight } from 'react-icons/bs'
 export { BiPlus } from 'react-icons/bi'
 export { BiMinus } from 'react-icons/bi'
+export { FaAngleLeft } from 'react-icons/fa'
+export { FaAngleRight } from 'react-icons/fa'
+

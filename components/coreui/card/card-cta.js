@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import { useState } from 'react'
-import Item from './item'
+import Link from 'next/link';
+import Item from './item';
 
 
 function CardCTA({ item }) {
+  console.log(item);
   return (
-    <Link href={'/products/details'} passHref>
+    <Link href={item.slugUrlFv} passHref>
       <Item item={item}/>
     </Link>
   )

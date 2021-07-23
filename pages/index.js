@@ -1,17 +1,17 @@
 import { CContainer } from '@coreui/react'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 import Section from '../components/coreui/section/section'
-import ListItem from '../components/home/list-item'
 import Menu from '../components/home/menu'
 import SearchHeader from '../components/home/search-header'
 import SliderGroup from '../components/home/slider-group'
+import SlickSlider from '../components/slick-slider/slick-slider'
 import nextI18NextConfig from '../next-i18next.config'
-import Head from 'next/head'
 import { productService } from '../services/product-service'
 
 
-function Home({ products }) {
+function Home({ productsHighLight, dynamicBanner }) {
   const { t } = useTranslation('common');
 
   return (
@@ -31,11 +31,11 @@ function Home({ products }) {
       <Menu />
       <div id="content" className="bg-secondary-300 pt-lg-3">
         <CContainer lg >
-          <SliderGroup />
+          <SliderGroup dynamicBanner={dynamicBanner} />
           <Section title="deal hot" />
-          {/* <ListItem /> */}
+          <SlickSlider products={productsHighLight}/>
           <Section title="Vietnamese agricultural products" />
-          <ListItem pagination />
+          {/* <ListItem pagination /> */}
         </CContainer>
       </div>
     </>
@@ -62,12 +62,16 @@ function Home({ products }) {
 // 8:'3.00000000'
 // This function runs at build time on the build server
 export async function getStaticProps(context) {
-  const products = await productService.getAll()
+  const productsHighLight = await productService.getHighLightProductAll()
+  const dynamicBanner = await productService.getDynamicBanner()
+
   return {
     props: {
-      products: products,
+      productsHighLight: productsHighLight,
+      dynamicBanner: dynamicBanner,
       ...(await serverSideTranslations(context.locale, ['common'], nextI18NextConfig)),
-    }
+    },
+    revalidate: 60
   }
 }
 
