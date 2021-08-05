@@ -12,6 +12,7 @@
     "@coreui/coreui": "^4.0.1",
     "@coreui/react": "^4.0.0-beta.3",
     "bootstrap": "^5.0.0-beta3",
+    "lodash.camelcase": "^4.3.0",
     "next": "11.0.1",
     "next-i18next": "^8.5.5",
     "prop-types": "^15.7.2",

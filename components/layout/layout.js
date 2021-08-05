@@ -9,6 +9,7 @@ export default function Layout({ children, isMobile }) {
       return (
         <div className={'m-w-app'} style={{ display: 'flex', flex: '1 1', minHeight: '100vh', flexDirection: 'column' }}>
           <Header />
+          
           <div id='DESKTOP' className="flex-grow-1">{children}</div>
           <Footer />
         </div>

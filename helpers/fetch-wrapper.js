@@ -1,3 +1,5 @@
+import camelCase from 'lodash.camelcase'
+
 export const fetchWrapper = {
     get,
     post,
@@ -41,15 +43,19 @@ function _delete(url) {
 // helper functions
 
 async function handleResponse(response) {
+    if(!Object.keys(response).length){
+        return []
+    }
     const res = await response.json()
     if (res.fatalError && res.fatalError.length > 0 || res.nomalError && res.nomalError.length > 0) {
-        return 
+        return []
     }
     let result = [];
+    if (!res.data) return result;
     res.data.map(item => {  
         let object = {}
         res.headerList.map((key, index) => {
-            object[key] = item[index]
+            object[camelCase(key)] = item[index]
         })
         result.push(object)
     })

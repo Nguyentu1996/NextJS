@@ -40,9 +40,13 @@
   .m-w-full {
     min-width: 100%;
   }
+  .m-w-50{
+    max-width: 50%;
+  }
   .w-item {
-    width: 20%;
+    width: 19.34%;
     height: 310px;
+    margin: 0.33%;
   }
   .w-card-item {
     width: 20%;
@@ -170,8 +174,48 @@
       width: 15rem !important;
     }
     .w-item {
-      width: 16.6666666667%;
-      height: 350px;
+      /* width: 16.6666666667%;
+      height: 350px; */
+      width: 16%;
+      height: 320px;
+      margin: 0.33%;
+    }
+
+  }
+  @media (min-width: 1400px) {
+    .w-xl-100 {
+      width: 100% !important;
+    }
+    .w-xl-80 {
+      width: 80% !important;
+    }
+    .w-xl-75 {
+      width: 75% !important;
+    }
+    .w-xl-60 {
+      width: 60% !important;
+    }
+    .w-xl-50 {
+      width: 50% !important;
+    }
+    .w-xl-40 {
+      width: 40% !important;
+    }
+    .w-xl-25 {
+      width: 25% !important;
+    }
+    .w-xl-20 {
+      width: 20% !important;
+    }
+    .w-xl-15 {
+      width: 15rem !important;
+    }
+    .w-item {
+      /* width: 16.6666666667%;
+      height: 350px; */
+      width: 16%;
+      height: 340px;
+      margin: 0.33%;
     }
   }
   

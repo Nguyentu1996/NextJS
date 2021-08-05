@@ -1,37 +1,27 @@
 import { CCol, CRow } from "@coreui/react"
 import Carousel from "../coreui/carousel/carousel"
-import Program from "./program"
+import MyImage from "../coreui/image/image"
 
-function SliderGroup() {
-  const indicators = Array.from({ length: 8 }, (_, i) => i).map((key) => key)
+function SliderGroup({dynamicBanner, banner1, banner2}) {
 
   return (
     <div id="slider-group" className="">
       <CRow className="carousel mt-3">
-        <CCol md={8}>
-         <Carousel slides={ indicators } />
+        <CCol md={6} className="pe-2">
+          <Carousel slides={dynamicBanner} />
         </CCol>
-        <CCol md={4} className="">
-          <CRow className="pb-2 h-150 overflow-hidden">
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non mauris ante. Donec ac orci eu arcu
-              ornare tempor sit amet nec dui.
-              Nulla sit amet euismod velit. Proin ac purus dignissim, ullamcorper ipsum sed, laoreet nunc
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non mauris ante. Donec ac orci eu a
-              rcu ornare tempor sit amet nec dui.
-              Nulla sit amet euismod velit. Proin ac purus dignissim, ullamcorper ipsum sed, laoreet nunc
-            </span>
+        <CCol md={3} className="p-0">
+          <CRow className="h-full mx-2 p-0">
+            <MyImage id="banner" src={banner1[0]?.imageUrlFv} alt="image banner highlight" objectFit="cover" width={500} height={500}  />
           </CRow>
-          <CRow className="pb-2 h-150 overflow-hidden">
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non mauris ante. Donec ac orci eu arcu ornare t
-              empor sit amet nec dui.
-              Nulla sit amet euismod velit. Proin ac purus dignissim, ullamcorper ipsum sed, laoreet nunc
-            </span>
+        </CCol>
+        <CCol md={3}>
+          <CRow className="h-full me-0 ps-2">
+            <MyImage id="banner" src={banner2[0]?.imageUrlFv} alt="image banner highlight" objectFit="cover" width={500} height={500} />
           </CRow>
         </CCol>
       </CRow>
-      <Program />
+      {/* <Program /> */}
     </div>
   )
 }

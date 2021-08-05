@@ -1,9 +1,5 @@
 import { appWithTranslation } from 'next-i18next'
 import nextI18NextConfig from '../next-i18next.config.js'
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { useEffect } from 'react'
-
 import '../styles/index'
 import '../styles/_custom-theme.css'
 import '../styles/_font-weight.css'
@@ -17,24 +13,15 @@ import Device from '../components/device'
 
 
 function MyApp({ Component, pageProps }) {
-  // const router = useRouter();
-  // const { locale } = router;
-  // const { i18n } = useTranslation();
-
-  // useEffect(() => {
-  //     i18n.changeLanguage(locale);
-  // }, [locale, i18n]);
 
 
   return (
     <Device >
       {({ isMobile }) =>
         <Layout isMobile={isMobile}>
-          <div>
             <main>
               <Component {...pageProps} />
             </main>
-          </div>
         </Layout>
       }
     </Device>

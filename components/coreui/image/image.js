@@ -1,27 +1,51 @@
 import Image from "next/image"
 import PropTypes from 'prop-types';
+import { useState } from "react";
+import { apiUrl } from '../../../config';
+import notfoundImg from '../../../public/images/image-not-found.png'
 
 const myLoader = ({ src, width, quality }) => {
-  return `https://example.com/${src}?w=${width}&q=${quality || 75}`
+  if (!src) {
+    return notfoundImg
+  }
+  return `${apiUrl}/File/${src}?w=${width}&q=${quality || 75}`
 }
 
-function  MyImage(props) {
+function MyImage(props) {
+  const [srcFallBack, setSrcFallBack] = useState(false)
+
   return (
-    <Image
-      className={props.className}
-      loader={myLoader}
-      src={props.name}
-      alt="Picture of the author"
-      width={props?.width}
-      height={props?.height}
-      layout={props?.layout}
-      objectFit={props?.objectFit}
-    />
+    <>
+      {
+        srcFallBack && (
+        <Image 
+          src={notfoundImg} 
+          alt={props?.alt}
+          width={props?.width}
+          height={props?.height}
+          layout={props?.layout}
+          objectFit={props?.objectFit}/>)
+      }
+      { srcFallBack === false && (
+        <Image
+          className={props?.className}  
+          loader={myLoader}
+          src={props?.src}
+          alt={props?.alt}
+          width={props?.width}
+          height={props?.height}
+          layout={props?.layout}
+          objectFit={props?.objectFit}
+          onError={() => setSrcFallBack(true)}
+        />)
+      }
+    </>
   )
+
 }
 
-MyImage.propTypes  = {
-  name: PropTypes.string.isRequired,
+MyImage.propTypes = {
+  src: PropTypes.string.isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
   layout: PropTypes.oneOf(['fill', 'fixed', 'responsive', 'intrinsic']),
