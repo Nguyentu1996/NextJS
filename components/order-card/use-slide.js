@@ -1,24 +1,24 @@
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-// const useSlide = () => {
-//   const [isSlideVisible, setIsSlideVisible] = useState(false)
+const useSlide = () => {
+  const [isSlideVisible, setIsSlideVisible] = useState(false)
 
-//   useEffect(() => {
+  useEffect(() => {
   
-//   return setIsSlideVisible(isSlideVisible)
-//   }, [isSlideVisible])
+  return setIsSlideVisible(isSlideVisible)
+  }, [isSlideVisible])
 
-//   function toggleSlidebar(isVisible) {
-//     console.log("visible",isVisible);
-//     setIsSlideVisible(isVisible)
-//     console.log("visible",isVisible);
+  function toggleSlidebar(isVisible) {
+    console.log("visible",isVisible);
+    setIsSlideVisible(isVisible)
+    console.log("visible",isVisible);
 
-//   }
+  }
 
-//   return {
-//     isSlideVisible,
-//     toggleSlidebar
-//   }
-// }
+  return {
+    isSlideVisible,
+    toggleSlidebar
+  }
+}
 
-// export default useSlide
+export default useSlide
