@@ -2,7 +2,6 @@ import { CContainer } from '@coreui/react'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
-import { useState } from 'react'
 import Section from '../components/coreui/section/section'
 import Tabs from '../components/coreui/tabs/tabs'
 import Menu from '../components/home/menu'
@@ -15,7 +14,6 @@ import { productService } from '../services/product-service'
 
 function Home(props) {
   const { t } = useTranslation('common');
-  const {isSlideVisible, toggleSlidebar} = useState(false)
 
   return (
     <>
@@ -43,7 +41,7 @@ function Home(props) {
           <SlickSlider products={props.productsHighLight} />
           <Section title="Vietnamese agricultural products" />
           <SlickSlider products={props.productAll} />
-          <OrderCart  isSlideVisible />
+          <OrderCart  />
         </CContainer>
       </div>
     </>

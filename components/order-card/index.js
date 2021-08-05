@@ -1,3 +1,3 @@
-// import useSlide from './use-slide'
+import useSlide from './use-slide'
 
-// export { useSlide }
+export { useSlide }
