@@ -3,7 +3,7 @@ const { i18n } = require('./next-i18next.config');
 
 module.exports = {
   images: {
-    domains: ['http://thuongmainongsan.com:8080/thuongmainongsan'],
+    domains: ['https://qrcodehaugiang.com.vn:8080/thuongmainongsan'],
   },
   i18n,
   // async rewrites() {
