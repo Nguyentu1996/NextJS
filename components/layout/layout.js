@@ -7,7 +7,7 @@ export default function Layout({ children, isMobile }) {
       return <div>Mobile Layout Init</div>
     } else {
       return (
-        <div className={'m-w-app'} style={{ display: 'flex', flex: '1 1', minHeight: '100vh', flexDirection: 'column' }}>
+        <div id="root" className={'m-w-app'} style={{ display: 'flex', flex: '1 1', minHeight: '100vh', flexDirection: 'column' }}>
           <Header />
           
           <div id='DESKTOP' className="flex-grow-1">{children}</div>

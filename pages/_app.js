@@ -10,26 +10,42 @@ import '../styles/globals.css'
 import Layout from '../components/layout/layout.js'
 import Device from '../components/device'
 
+import { wrapper } from "../store/";
 
 
 function MyApp({ Component, pageProps }) {
 
-
   return (
-    <Device >
-      {({ isMobile }) =>
-        <Layout isMobile={isMobile}>
+      <Device >
+        {({ isMobile }) =>
+          <Layout isMobile={isMobile}>
             <main>
               <Component {...pageProps} />
             </main>
-        </Layout>
-      }
-    </Device>
+          </Layout>
+        }
+      </Device>
   )
 }
 
-export default appWithTranslation(MyApp, nextI18NextConfig)
-{/* <button
+export async function getInitialProps({ Component, ctx }) {
+  const pageProps = {
+    ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+  };
+  // 2. Stop the saga if on server
+  if (ctx.req) {
+    ctx.store.dispatch(END);
+    await ctx.store.sagaTask.toPromise();
+  }
+  // 3. Return props
+  return {
+    pageProps,
+  };
+}
+
+
+export default wrapper.withRedux(appWithTranslation(MyApp, nextI18NextConfig))
+/* <button
     value={language === 'en' ? 'da' : 'en'}
     onClick={(e) => {
         const locale = router.locale === 'en' ? 'da' : 'en';
@@ -47,4 +63,4 @@ export default appWithTranslation(MyApp, nextI18NextConfig)
     ) : (
         <img src={menuItems.data.body[4].items[0].image.url} />
     )}
-</button> */}
+</button> */

@@ -1,5 +1,4 @@
 import { useState, forwardRef } from 'react'
-import { useSlide } from '../../order-card';
 import Icons from '../icons'
 import MyImage from '../image/image';
 
@@ -7,7 +6,6 @@ import MyImage from '../image/image';
 
 const Item = (({ item, onClick, href }, ref) => {
   const [inHover, setHover] = useState(false)
-  const {isSlideVisible, toggleSlidebar} = useSlide()
 
   return (
     <div
@@ -73,7 +71,8 @@ const Item = (({ item, onClick, href }, ref) => {
         !inHover === false
         && (
           <div id="add-to-card" className="position-absolute bottom-0 end-0 w-100 ">
-            <button className="w-100 bg-orange-300 text-white border-0"> Add to card </button>
+            <button className="w-100 bg-orange-300 text-white border-0" 
+            > Add to card </button>
           </div>
         )
       }

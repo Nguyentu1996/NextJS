@@ -1,4 +1,4 @@
-import camelCase from 'lodash.camelcase'
+import lodash from 'lodash'
 
 export const fetchWrapper = {
     get,
@@ -55,7 +55,7 @@ async function handleResponse(response) {
     res.data.map(item => {  
         let object = {}
         res.headerList.map((key, index) => {
-            object[camelCase(key)] = item[index]
+            object[lodash.camelCase(key)] = item[index]
         })
         result.push(object)
     })
