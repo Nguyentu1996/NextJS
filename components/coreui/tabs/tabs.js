@@ -1,7 +1,7 @@
 import { useState } from "react"
 import SlickSlider from "../../slick-slider/slick-slider"
 
-function Tabs({ tabsItem, dataList }) {
+function Tabs({ tabsItem, dataList, addToCartClick }) {
   const [activeKey, setActiveKey] = useState(1)
   return (
     <>
@@ -27,7 +27,7 @@ function Tabs({ tabsItem, dataList }) {
           {dataList && dataList.map((data, index) =>
             <div key={'tab-content' + index + 1}
               style={activeKey === index + 1 ? { display: 'block' } : { display: 'none' }}>
-                <SlickSlider products={data} />
+                <SlickSlider products={data} addToCartClick={addToCartClick} />
             </div>
           )}
         </div>

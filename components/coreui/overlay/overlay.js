@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
-function Overlay ({show}) {
+function Overlay ({show, hide}) {
     const [isBrowser, setIsBrowser] = useState(false);
-  
     useEffect(() => {
       setIsBrowser(true);
-    }, []);
-    const overlay = show ?  <div className={'overlay active'}/> : null;
+    }, [show]);
+    const overlay = (<div className={`overlay ${show ? 'active' : ''} `} onClick={hide}/>);
     if (isBrowser) {
         return ReactDOM.createPortal(
             overlay

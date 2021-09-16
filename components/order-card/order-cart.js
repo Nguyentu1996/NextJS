@@ -1,21 +1,19 @@
-import { createRef, useEffect, useState } from "react"
+import { createRef, useEffect, useRef, useState } from "react"
 import ReactDOM from "react-dom";
 
 function OrderCart({ children, onSlideClose, isSlideVisible }) {
   const [isBrowser, setIsBrowser] = useState(false);
+  const closeRef = useRef()
+  closeRef.current = onSlideClose
 
   useEffect(() => {
     setIsBrowser(true);
-    document.body.style.overflow = 'hidden';
-  }, []);
-
-  useEffect(() => {
     if (!isSlideVisible) {
       return null
     }
     function keyListener(event) {
       if (event.key === 'Escape') {
-        return isSlideVisible = false
+        return closeRef.current();
       }
       return null
     }
@@ -24,7 +22,7 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
     return () => document.removeEventListener('keydown', keyListener)
   }, [isSlideVisible])
 
-  const sidebarCart = isSlideVisible ? (
+  const sidebarCart = (
     <div className={"sidebar-cart " + `${isSlideVisible ? 'active' : ''}`}>
       <div className="sidebar-cart-header">
         Added
@@ -36,7 +34,7 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
         bottom
       </div>
     </div>
-  ) : null;
+  );
 
   if (isBrowser) {
     return ReactDOM.createPortal(

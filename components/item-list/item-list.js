@@ -1,11 +1,12 @@
 import CardCTA from '../coreui/card/card-cta'
 import Paginator from '../coreui/paginator/paginator'
 //TODO No use
-function ItemList({ products, pagination }) {
+function ItemList({ products, pagination, addToCartClick }) {
+
   return (
     <div className="d-flex flex-wrap p-1">
       {
-        products.map(item => <CardCTA item={item} key={item.itemCdFv}/>)
+        products.map(item => <CardCTA item={item} key={item.itemCdFv} addToCartClick={addToCartClick}/>)
       }
       
       {

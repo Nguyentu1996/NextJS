@@ -2,13 +2,14 @@ import { CContainer } from '@coreui/react'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import Overlay from '../components/coreui/overlay/overlay'
 import Section from '../components/coreui/section/section'
 import Tabs from '../components/coreui/tabs/tabs'
 import Menu from '../components/home/menu'
 import SearchHeader from '../components/home/search-header'
 import SliderGroup from '../components/home/slider-group'
+import useOrderCart from '../components/order-card'
 import OrderCart from '../components/order-card/order-cart'
 import SlickSlider from '../components/slick-slider/slick-slider'
 import nextI18NextConfig from '../next-i18next.config'
@@ -16,10 +17,12 @@ import { productService } from '../services/product-service'
 
 function Home(props) {
   const { t } = useTranslation('common');
-  const [isSlideVisible, setSlideVisible] = useState(true);
+  const { isSlideVisible, toggleOrderCart } = useOrderCart()
+  const toggle = useCallback((e) => toggleOrderCart(e), [props])
   useEffect(() => {
-    
-  }, [props]);
+    // console.log();
+  }, [props])
+
 
   return (
     <>
@@ -42,13 +45,14 @@ function Home(props) {
           <Tabs
             tabsItem={['Sản phẩm nổi bật', 'Sản phẩm ưu đãi', 'sản phẩm giảm giá']}
             dataList={[props.productsHighLight, props.productsHotDeal, props.productsHotSell]}
+            addToCartClick={toggle}
           />
           <Section title="deal hot" />
-          <SlickSlider products={props.productsHighLight} />
+          <SlickSlider products={props.productsHighLight} addToCartClick={toggle}/>
           <Section title="Vietnamese agricultural products" />
-          <SlickSlider products={props.productAll} />
-          <Overlay show={isSlideVisible} />
-          <OrderCart isSlideVisible={isSlideVisible} />
+          <SlickSlider products={props.productAll} addToCartClick={toggle} />
+          <Overlay show={isSlideVisible} hide={() => toggle(false)}/>
+          <OrderCart isSlideVisible={isSlideVisible} onSlideClose={toggle}/>
         </CContainer>
       </div>
     </>

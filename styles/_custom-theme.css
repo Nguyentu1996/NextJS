@@ -288,6 +288,7 @@ object-fit: cover;
     right: 0;
     opacity: 1;
     visibility: visible;
+    overflow: auto;
 }
 .overlay {
     position: fixed;

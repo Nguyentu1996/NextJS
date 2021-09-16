@@ -1,12 +1,12 @@
-import { useState, forwardRef } from 'react'
-import Icons from '../icons'
+import { forwardRef, useState } from 'react';
+import Icons from '../icons';
 import MyImage from '../image/image';
 
 
 
-const Item = (({ item, onClick, href }, ref) => {
+const Item = (({ item, onClick, href, addToCartClick }, ref) => {
   const [inHover, setHover] = useState(false)
-
+  
   return (
     <div
       id="card-item"
@@ -70,7 +70,9 @@ const Item = (({ item, onClick, href }, ref) => {
       {
         !inHover === false
         && (
-          <div id="add-to-card" className="position-absolute bottom-0 end-0 w-100 ">
+          <div id="add-to-card" className="position-absolute bottom-0 end-0 w-100 "    
+            onClick={addToCartClick}
+          >
             <button className="w-100 bg-orange-300 text-white border-0" 
             > Add to card </button>
           </div>

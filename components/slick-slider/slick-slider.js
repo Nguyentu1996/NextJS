@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 // import Swiper core and required modules
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,14 +10,13 @@ import ItemList from "../item-list/item-list";
 // install Swiper modules
 SwiperCore.use([Pagination, Autoplay, Navigation]);
 
-function SlickSlider({ products, pagination, autoplay, key }) {
+function SlickSlider({ products, pagination, autoplay, key, addToCartClick }) {
   const ref = useRef()
   const prevRef = useRef(null)
   const nextRef = useRef(null)
   const [listProducts, setListProduct] = useState(pageInSlide())
-  console.log(listProducts)
 
-
+ 
   const paginationOption = {
     "clickable": true,
     // "renderBullet": true
@@ -54,7 +53,7 @@ function SlickSlider({ products, pagination, autoplay, key }) {
     return slider
   }
 
-  return (
+  const contentSlickSlider =  (
     <>
       <Swiper
         ref={ref}
@@ -75,7 +74,7 @@ function SlickSlider({ products, pagination, autoplay, key }) {
       >
         {listProducts && listProducts.map((productsItem, index) =>
           <SwiperSlide key={`slider-tabs` + index}>
-            <ItemList products={productsItem} />
+            <ItemList products={productsItem} addToCartClick={addToCartClick}/>
           </SwiperSlide>
         )}
         {
@@ -97,5 +96,8 @@ function SlickSlider({ products, pagination, autoplay, key }) {
       </Swiper>
 
     </>)
+    const SlickSliderComponent = useMemo(() => contentSlickSlider, [products])
+
+    return SlickSliderComponent
 }
 export default SlickSlider
