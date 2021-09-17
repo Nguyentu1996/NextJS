@@ -1,5 +1,6 @@
 import { createRef, useEffect, useRef, useState } from "react"
 import ReactDOM from "react-dom";
+import styles from './order-cart.module.css'
 
 function OrderCart({ children, onSlideClose, isSlideVisible }) {
   const [isBrowser, setIsBrowser] = useState(false);
@@ -24,8 +25,16 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
 
   const sidebarCart = (
     <div className={"sidebar-cart " + `${isSlideVisible ? 'active' : ''}`}>
-      <div className="sidebar-cart-header">
+      <div className={styles.content}>
+      <div className={styles.close}/>
+      <div className={styles['cart-header']}>
         Added
+        <div id="cart-l-header" className={styles['cart-left']}>
+          left
+        </div>
+        <div id="cart-r-header" className={styles['cart-right']}>
+          right
+        </div>
       </div>
       <div className="sidebar-cart-body">
         content
@@ -33,6 +42,10 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
       <div className="sidebar-cart-bottom">
         bottom
       </div>
+
+      </div>
+
+      
     </div>
   );
 

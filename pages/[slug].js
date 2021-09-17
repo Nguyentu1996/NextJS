@@ -2,13 +2,13 @@
 import { CContainer } from "@coreui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Breabcrumb from "../components/coreui/breadcumb/breabcrumb";
 import SearchHeader from "../components/home/search-header";
 import ItemDetails from "../components/item-details/item-details";
 import { productService } from '../services/product-service'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config'
 import { domain } from '../config';
+import Breadcrumb from "../components/coreui/breadcrumb/breabcrumb";
 
 // In getStaticPaths(), you need to return the list of
 // ids of product pages (/products/[id]) that you’d
@@ -59,7 +59,7 @@ export default function Product({ product, images }) {
         </Head>
         <SearchHeader />
         <div className="bg-secondary-300">
-            <Breabcrumb />
+            <Breadcrumb />
             <CContainer lg className="bg-white">
                 <ItemDetails item={product[0]} images={images} />
             </CContainer>

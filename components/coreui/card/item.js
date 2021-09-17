@@ -1,12 +1,19 @@
 import { forwardRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Icons from '../icons';
 import MyImage from '../image/image';
-
+import { addToCart } from '../../../store/actions/order-cart'
 
 
 const Item = (({ item, onClick, href, addToCartClick }, ref) => {
   const [inHover, setHover] = useState(false)
-  
+  const dispatch = useDispatch()
+
+  const handlerAdd = (event) => {
+    dispatch(addToCart(item))
+    addToCartClick(event)
+  }
+
   return (
     <div
       id="card-item"
@@ -71,7 +78,7 @@ const Item = (({ item, onClick, href, addToCartClick }, ref) => {
         !inHover === false
         && (
           <div id="add-to-card" className="position-absolute bottom-0 end-0 w-100 "    
-            onClick={addToCartClick}
+            onClick={handlerAdd}
           >
             <button className="w-100 bg-orange-300 text-white border-0" 
             > Add to card </button>

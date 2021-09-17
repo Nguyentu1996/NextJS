@@ -2,7 +2,7 @@ import { CContainer } from '@coreui/react'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback } from 'react'
 import Overlay from '../components/coreui/overlay/overlay'
 import Section from '../components/coreui/section/section'
 import Tabs from '../components/coreui/tabs/tabs'
@@ -15,13 +15,11 @@ import SlickSlider from '../components/slick-slider/slick-slider'
 import nextI18NextConfig from '../next-i18next.config'
 import { productService } from '../services/product-service'
 
+
 function Home(props) {
   const { t } = useTranslation('common');
   const { isSlideVisible, toggleOrderCart } = useOrderCart()
   const toggle = useCallback((e) => toggleOrderCart(e), [props])
-  useEffect(() => {
-    // console.log();
-  }, [props])
 
 
   return (
@@ -71,7 +69,6 @@ export async function getStaticProps(context) {
     productService.getBannerImage2()
    
   ])
-
   return {
     props: {
       productAll,

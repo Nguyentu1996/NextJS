@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import Icons from '../icons'
 
-function Breabcrumb({ menu }) {
+function Breadcrumb({ menu }) {
   return (
     <CContainer lg className="h-2 d-flex align-items-center">
       <Link href="/" passHref className="text-decoration-none link">Home</Link>  
@@ -12,4 +12,4 @@ function Breabcrumb({ menu }) {
     </CContainer>
   )
 }
-export default Breabcrumb
+export default Breadcrumb

@@ -14,7 +14,6 @@ import { wrapper } from "../store/";
 
 
 function MyApp({ Component, pageProps }) {
-
   return (
       <Device >
         {({ isMobile }) =>

@@ -276,7 +276,7 @@ object-fit: cover;
     right: -200px;
     bottom: 0;
     height: 100%;
-    width: 400px;
+    width: 580px;
     background: #ffffff;
     box-shadow: 2.5px 4.33px 40px 5px rgb(12 31 46 / 10%);
     opacity: 0;
@@ -288,7 +288,6 @@ object-fit: cover;
     right: 0;
     opacity: 1;
     visibility: visible;
-    overflow: auto;
 }
 .overlay {
     position: fixed;
@@ -307,3 +306,7 @@ object-fit: cover;
     visibility: visible;
     /* overflow: hidden; */
 }
+.sidebar-cart-body {
+    flex-grow: 1;
+}
+
