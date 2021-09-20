@@ -1,5 +1,6 @@
 import { createRef, useEffect, useRef, useState } from "react"
 import ReactDOM from "react-dom";
+import Icons from "../coreui/icons";
 import styles from './order-cart.module.css'
 
 function OrderCart({ children, onSlideClose, isSlideVisible }) {
@@ -28,9 +29,13 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
       <div className={styles.content}>
       <div className={styles.close}/>
       <div className={styles['cart-header']}>
-        Added
         <div id="cart-l-header" className={styles['cart-left']}>
-          left
+          <div className={styles['added-to-cart-message']}>
+            <div className={styles['box-message']}>
+              <h4>Added to Cart</h4>
+              <Icons.GiConfirmed />
+            </div>
+          </div>
         </div>
         <div id="cart-r-header" className={styles['cart-right']}>
           right

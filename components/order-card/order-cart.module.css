@@ -34,10 +34,23 @@
 .cart-header {
     width: 100%;
     display: block;
+    min-height: 100px;
+    padding: 8px;
 }
 
 .cart-left {
+    display: table;
 }
+.added-to-cart-message {
+    border-width: 0;
+    padding-right: 10px;
+    display: inline-block;
+}
+.box-message {
+    padding: 14px 18px 6px 50px;
+}
+
+
 .cart-right {
 
 }

@@ -10,6 +10,7 @@ const Item = (({ item, onClick, href, addToCartClick }, ref) => {
   const dispatch = useDispatch()
 
   const handlerAdd = (event) => {
+    console.log("Trigger");
     dispatch(addToCart(item))
     addToCartClick(event)
   }
