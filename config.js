@@ -4,8 +4,8 @@ const apiUrl = process.env.NODE_ENV === 'development'
 const access = {
     myResourceDir: 'C:/web/TmdtWebResource/tmdt',
 }
-const domain = "http://192.168.4.222:8080/thuongmainongsan"
-// https://qrcodehaugiang.com.vn:8080/thuongmainongsan"
+const domain = "https://qrcodehaugiang.com.vn:8080/thuongmainongsan"
+// "http://192.168.4.222:8080/thuongmainongsan"
 export {
     apiUrl,
     access,
