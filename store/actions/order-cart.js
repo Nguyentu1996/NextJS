@@ -6,9 +6,9 @@ export const INCREMENT_COUNTER = "INCREMENT_COUNTER";
 export const DECREMENT_COUNTER = "DECREMENT_COUNTER";
 
 //Action Creator
-export const addToCart = (item) => ({
+export const addToCart = (item, quantity) => ({
     type: ADD_TO_CART,
-    payload: item
+    payload: {...item, quantity}
 });
 
 export const removeItem = () => ({

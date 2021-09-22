@@ -19,8 +19,7 @@ import { productService } from '../services/product-service'
 function Home(props) {
   const { t } = useTranslation('common');
   const { isSlideVisible, toggleOrderCart } = useOrderCart()
-  const toggle = useCallback((e) => toggleOrderCart(e), [props])
-
+  const toggle = useCallback((e) => toggleOrderCart(e), [toggleOrderCart])
 
   return (
     <>

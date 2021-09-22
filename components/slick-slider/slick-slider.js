@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 // import Swiper core and required modules
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,17 +16,13 @@ function SlickSlider({ products, pagination, autoplay, key, addToCartClick }) {
   const nextRef = useRef(null)
   const [listProducts, setListProduct] = useState(pageInSlide())
 
- 
   const paginationOption = {
     "clickable": true,
     // "renderBullet": true
     "renderBullet": function (index, className) {
-
       return '<span class=\"' + className + '\">' + (index + 1) + '</span>';
-
     }
   }
-
 
   function pageInSlide() {
     let page = 1;
@@ -53,7 +49,7 @@ function SlickSlider({ products, pagination, autoplay, key, addToCartClick }) {
     return slider
   }
 
-  const contentSlickSlider =  (
+  return  (
     <>
       <Swiper
         ref={ref}
@@ -96,8 +92,5 @@ function SlickSlider({ products, pagination, autoplay, key, addToCartClick }) {
       </Swiper>
 
     </>)
-    const SlickSliderComponent = useMemo(() => contentSlickSlider, [products])
-
-    return SlickSliderComponent
 }
-export default SlickSlider
+export default React.memo(SlickSlider)

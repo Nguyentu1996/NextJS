@@ -3,15 +3,15 @@ import { useDispatch } from 'react-redux';
 import Icons from '../icons';
 import MyImage from '../image/image';
 import { addToCart } from '../../../store/actions/order-cart'
+import { commonService } from '../../../services/common-service'
 
 
 const Item = (({ item, onClick, href, addToCartClick }, ref) => {
   const [inHover, setHover] = useState(false)
   const dispatch = useDispatch()
-
+  const itemPrice = (price) => commonService.currencyFormat(price)
   const handlerAdd = (event) => {
-    console.log("Trigger");
-    dispatch(addToCart(item))
+    dispatch(addToCart(item, 1))
     addToCartClick(event)
   }
 
@@ -57,9 +57,9 @@ const Item = (({ item, onClick, href, addToCartClick }, ref) => {
               </div>
             )
           }
-          <div id="price" className="w-100 d-flex justify-content-between align-items-center py-1 px-3">
-            <span className="fs-6 fw-500 text-orange-300 overflow-hidden m-w-50">{item.price1Fn}</span>
-            <span className="text-decoration-midle text-secondary fs-13 overflow-hidden m-w-50">{item?.price2Fn}</span>
+          <div id="price" className="w-100 d-flex justify-content-between align-items-center py-1 px-2">
+            <span className="price-space fs-6 fw-500 text-orange-300 overflow-hidden m-w-50">{itemPrice(item.price1Fn)}</span>
+            <span className="price-space text-decoration-midle text-secondary fs-13 overflow-hidden m-w-50">{itemPrice(item?.price2Fn)}</span>
           </div>
         </div>
 

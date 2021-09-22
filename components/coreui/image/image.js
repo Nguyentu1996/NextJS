@@ -1,34 +1,39 @@
-import Image from "next/image"
+import Image from "next/image";
 import PropTypes from 'prop-types';
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { apiUrl } from '../../../config';
-import notfoundImg from '../../../public/images/image-not-found.png'
+import notfoundImg from '../../../public/images/image-not-found.png';
 
 const myLoader = ({ src, width, quality }) => {
-  if (!src) {
+  if (src == undefined || src == null) {
     return notfoundImg
   }
   return `${apiUrl}/File/${src}?w=${width}&q=${quality || 75}`
 }
 
 function MyImage(props) {
+  
   const [srcFallBack, setSrcFallBack] = useState(false)
+
+  useEffect(() => {
+    if(srcFallBack) return setSrcFallBack(false)
+  }, [props, setSrcFallBack])
 
   return (
     <>
       {
         srcFallBack && (
-        <Image 
-          src={notfoundImg} 
-          alt={props?.alt}
-          width={props?.width}
-          height={props?.height}
-          layout={props?.layout}
-          objectFit={props?.objectFit}/>)
+          <Image
+            src={notfoundImg}
+            alt={props?.alt}
+            width={props?.width}
+            height={props?.height}
+            layout={props?.layout}
+            objectFit={props?.objectFit} />)
       }
-      { srcFallBack === false && (
+      {srcFallBack === false && (
         <Image
-          className={props?.className}  
+          className={props?.className}
           loader={myLoader}
           src={props?.src}
           alt={props?.alt}
@@ -39,8 +44,8 @@ function MyImage(props) {
           onError={() => setSrcFallBack(true)}
         />)
       }
-    </>
-  )
+    </>)
+
 
 }
 
@@ -51,4 +56,4 @@ MyImage.propTypes = {
   layout: PropTypes.oneOf(['fill', 'fixed', 'responsive', 'intrinsic']),
   objectFit: PropTypes.oneOf(['contain', 'cover'])
 }
-export default MyImage
+export default React.memo(MyImage)

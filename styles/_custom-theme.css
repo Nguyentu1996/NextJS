@@ -28,6 +28,9 @@
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
+* {
+    box-sizing: border-box;
+}
 textarea:focus, input:focus{
     outline: none;
 }
@@ -59,7 +62,7 @@ textarea:focus, input:focus{
     background-color: var(--bs-orange-100)
 }
 .bg-secondary-300 {
-    background-color: #f5f5f5
+    background-color: #f5f5f5;
 }
 .bg-secondary {
     background-color: var(--bs-secondary);
@@ -306,7 +309,6 @@ object-fit: cover;
     visibility: visible;
     /* overflow: hidden; */
 }
-.sidebar-cart-body {
-    flex-grow: 1;
+.price-space {
+    letter-spacing: -0.5px;
 }
-

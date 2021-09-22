@@ -5,7 +5,14 @@ import createSagaMiddleware from "redux-saga";
 import reducers from "./reducers";
 import sagas from "./sagas";
 
+import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist';
 
+const persistConfig = {
+  key: 'MyCart',
+  storage: storage,
+  blacklist: ['login']
+};
 
 const bindMiddleware = middleware => {
   const arrMiddleware = [middleware];
@@ -20,8 +27,11 @@ const bindMiddleware = middleware => {
 
 function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
+  const persistedReducer = persistReducer(persistConfig, reducers);
+  const store = createStore(persistedReducer, bindMiddleware(sagaMiddleware));
 
-  const store = createStore(reducers, bindMiddleware(sagaMiddleware));
+  store.__persistor = persistStore(store); // Nasty hack
+
   store.runSagaTask = () => {
     store.sagaTask = sagaMiddleware.run(sagas);
   };

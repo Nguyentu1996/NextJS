@@ -1,5 +1,8 @@
 import { appWithTranslation } from 'next-i18next'
 import nextI18NextConfig from '../next-i18next.config.js'
+import { useStore } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react';
+
 import '../styles/index'
 import '../styles/_custom-theme.css'
 import '../styles/_font-weight.css'
@@ -14,16 +17,19 @@ import { wrapper } from "../store/";
 
 
 function MyApp({ Component, pageProps }) {
+  const store = useStore()
   return (
-      <Device >
-        {({ isMobile }) =>
-          <Layout isMobile={isMobile}>
+    <Device >
+      {({ isMobile }) =>
+        <Layout isMobile={isMobile}>
+          <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
             <main>
               <Component {...pageProps} />
             </main>
-          </Layout>
-        }
-      </Device>
+          </PersistGate>
+        </Layout>
+      }
+    </Device>
   )
 }
 
