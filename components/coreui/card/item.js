@@ -44,10 +44,9 @@ const Item = (({ item, onClick, href, addToCartClick }, ref) => {
             <Icons.HiStar />
           </div>
 
-
-          <div id="name" className="w-100">
-            <span>{item.itemInfoFv}</span>
-          </div>
+            <div id="name" className="w-100 item-name">
+              {item.itemInfoFv}
+            </div>
           {
             !inHover
             && (
@@ -78,10 +77,10 @@ const Item = (({ item, onClick, href, addToCartClick }, ref) => {
       {
         !inHover === false
         && (
-          <div id="add-to-card" className="position-absolute bottom-0 end-0 w-100 "    
+          <div id="add-to-card" className="position-absolute bottom-0 end-0 w-100 "
             onClick={handlerAdd}
           >
-            <button className="w-100 bg-orange-300 text-white border-0" 
+            <button className="w-100 bg-orange-300 text-white border-0"
             > Add to card </button>
           </div>
         )

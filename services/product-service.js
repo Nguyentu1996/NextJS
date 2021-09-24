@@ -10,7 +10,8 @@ export const productService = {
     getHotDealProduct,
     getHotSellProduct,
     getBannerImage1,
-    getBannerImage2
+    getBannerImage2,
+    getItemById
 
 };
 const baseUrl = `${apiUrl}/ExecuteQuery`;
@@ -85,6 +86,14 @@ function getBannerImage2() {
     const body = {
         access: access , 
         queryId: 'home/get_banner_2_image' ,
+        bindVariables: []
+    }
+    return fetchWrapper.post(baseUrl, body)
+}
+function getItemById(ids) {
+    const body = {
+        access: access , 
+        queryId: 'get_hotdeal_product' ,
         bindVariables: []
     }
     return fetchWrapper.post(baseUrl, body)

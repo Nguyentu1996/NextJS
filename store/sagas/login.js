@@ -4,5 +4,5 @@ import sagaHelper from './saga-helper'
 import { loginService } from '../../services/login-service'
 
 export default function* watchFetchData() {
-  yield takeLatest(TYPES.LOGIN, sagaHelper({ api: loginService.login, success: 'Login Success', message: 'Login Errors' }))
+  yield takeLatest(TYPES.LOGIN, sagaHelper({ api: loginService.login }))
 }

@@ -5,6 +5,7 @@ import Icons from "../coreui/icons";
 import MyImage from "../coreui/image/image";
 import { commonService } from '../../services/common-service'
 import styles from './order-cart.module.css'
+import OrderItems from "../order-items/order-items"
 
 function OrderCart({ children, onSlideClose, isSlideVisible }) {
   const [isBrowser, setIsBrowser] = useState(false)
@@ -13,18 +14,22 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
   closeRef.current = onSlideClose
 
   const totalItemsCount = (items) => {
-    if(items == undefined || items== null || items.length == 0) return 0;
-    return items.reduce((total, item) =>  total + item.quantity, 0)
+    if (items == undefined || items == null || items.length == 0) return 0;
+    return items.reduce((total, item) => total + item.quantity, 0)
   }
 
   const totalPriceCount = (items) => {
-    if(items == undefined || items== null || items.length == 0) return 0;
-    return commonService.currencyFormat(items.reduce((total, item) =>  total + item.quantity * item.price1Fn, 0))
+    if (items == undefined || items == null || items.length == 0) return 0;
+    return commonService.currencyFormat(items.reduce((total, item) => total + item.quantity * item.price1Fn, 0))
   }
 
   const totalItems = useMemo(() => totalItemsCount(orderCart.result), [orderCart.result])
   const totalPrices = useMemo(() => totalPriceCount(orderCart.result), [orderCart.result])
 
+  // const dispatch = useDispatch()
+  // if(orderCart.result && orderCart.result.length > 0) {
+  //   dispatch(getItemInCart(orderCart.result.map(item => item.itemCdFv)))
+  // }
 
   useEffect(() => {
     setIsBrowser(true);
@@ -37,7 +42,7 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
       }
       return null
     }
-  
+
     document.addEventListener('keydown', keyListener)
 
     return () => document.removeEventListener('keydown', keyListener)
@@ -46,39 +51,41 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
 
   const sidebarCart = (
     <div className={"sidebar-cart " + `${isSlideVisible ? 'active' : ''}`}>
-      <div className={styles.content}>
-        <div className={styles.close} />
-        <div className={styles['cart-header']}>
-          <div id="cart-l-header" className={styles['cart-left']}>
-            <div className={styles['added-to-cart-message']}>
-              <div className={styles['box-message']}>
-                <h4 className={styles.message}>Added to Cart</h4>
-                <Icons.AiFillCheckCircle className={styles['icon-confirm']} />
-              </div>
-            </div>
-            <div className={styles['added-img']}>
-              {orderCart.added?.imageUrlFv && <MyImage src={orderCart.added?.imageUrlFv} className="img-item-cta thumb" alt={orderCart.added?.slugUrlFv} width={80} height={80} />}
+      <div className={styles.close} />
+      <div className={styles['cart-header']}>
+        <div id="cart-l-header" className={styles['cart-left']}>
+          <div className={styles['added-to-cart-message']}>
+            <div className={styles['box-message']}>
+              <h4 className={styles.message}>Added to Cart</h4>
+              <Icons.AiFillCheckCircle className={styles['icon-confirm']} />
             </div>
           </div>
-          <div id="cart-r-header" className={styles['cart-right']}>
-            <div className="position-fixed">
-              <p className={styles['subtotal']} >
-                <b>Card subtotal </b>({totalItems} {totalItems > 1 ? 'items' : 'item'}): 
-                <span className="text-orange-300 ps-2">{totalPrices}</span>
-              </p>
-              <div className="d-flex py-1">
-                <button className="border-0 me-3 text-orange-300 px-3 py-1 bg-orange-100"> Cart </button>
-                <button className="bg-orange-300 text-white border-0 px-3 py-1"> Process Checkout ({totalItems} {totalItems > 1 ? 'items' : 'item'}) </button>
-              </div>
-            </div>
+          <div className={styles['added-img']}>
+            {orderCart.added?.imageUrlFv && <MyImage src={orderCart.added?.imageUrlFv} className="img-item-cta thumb" alt={orderCart.added?.slugUrlFv} width={70} height={70} />}
           </div>
         </div>
-        <div className={styles['sidebar-cart-body']}>
-          <div className={styles['sidebar-cart-body-content']}>
-            content
+        <div id="cart-r-header" className={styles['cart-right']}>
+          <div className="position-fixed">
+            <p className={styles['subtotal']} >
+              <b>Card subtotal </b>({totalItems} {totalItems > 1 ? 'items' : 'item'}):
+              <span className="text-orange-300 ps-2">{totalPrices}</span>
+            </p>
+            <div className="d-flex py-1">
+              <button className="border-0 me-3 text-orange-300 px-3 py-1 bg-orange-100"> Cart </button>
+              <button className="bg-orange-300 text-white border-0 px-3 py-1"> Process Checkout ({totalItems} {totalItems > 1 ? 'items' : 'item'}) </button>
+            </div>
           </div>
         </div>
       </div>
+      {/* <div className={styles['sidebar-cart-body']}>
+          <div className={styles['sidebar-cart-body-content']}>
+            <OrderItems items={orderCart?.result} />
+          </div>
+        </div> */}
+        <div className={styles['cart-content']}>
+          <OrderItems items={orderCart?.result} />
+          {/* <div className={styles['cart-body']}></div> */}
+        </div>
     </div>
   );
 

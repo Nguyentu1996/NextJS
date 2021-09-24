@@ -45,11 +45,11 @@ function Home(props) {
             addToCartClick={toggle}
           />
           <Section title="deal hot" />
-          <SlickSlider products={props.productsHighLight} addToCartClick={toggle}/>
+          <SlickSlider products={props.productsHighLight} addToCartClick={toggle} />
           <Section title="Vietnamese agricultural products" />
           <SlickSlider products={props.productAll} addToCartClick={toggle} />
-          <Overlay show={isSlideVisible} hide={() => toggle(false)}/>
-          <OrderCart isSlideVisible={isSlideVisible} onSlideClose={toggle}/>
+          <Overlay show={isSlideVisible} hide={() => toggle(false)} />
+          <OrderCart isSlideVisible={isSlideVisible} onSlideClose={toggle} />
         </CContainer>
       </div>
     </>
@@ -66,7 +66,7 @@ export async function getStaticProps(context) {
     productService.getDynamicBanner(),
     productService.getBannerImage1(),
     productService.getBannerImage2()
-   
+
   ])
   return {
     props: {
