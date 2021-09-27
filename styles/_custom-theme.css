@@ -350,7 +350,6 @@ object-fit: cover;
 .cart::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey; 
     border-radius: 10px;
-    
 }
    
   /* Handle */
@@ -363,3 +362,9 @@ object-fit: cover;
     box-shadow: 0 8px 6px -6px rgba(210, 22, 22, 0.03);
     -webkit-box-shadow: 0 8px 6px -6px rgb(210 22 22 / 3%);
 }
+#no-hover:hover {
+    color: var(--bs-orange-300);
+}
+.btn-animate:active {
+    transform: translateY(1px);
+} 

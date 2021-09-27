@@ -4,6 +4,7 @@ import { ADD_TO_CART, REMOVE_TO_CART, INCREMENT_COUNTER, DECREMENT_COUNTER, GET_
 const INIT_STATE = {
   result: [],
   added: {},
+  removed: {},
   success: null,
   message: null,
   fetching: false
@@ -39,7 +40,8 @@ function orderCartReducer(state = INIT_STATE, action) {
     case REMOVE_TO_CART:
       return {
         ...state,
-        result: state.result.filter(item => item.id !== action.payload.id),
+        result: state.result.filter(item => item.itemCdFv !== action.payload.itemCdFv),
+        removed: action.payload,
         message: 'Deleted to cart'
       }
     case INCREMENT_COUNTER:

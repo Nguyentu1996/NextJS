@@ -18,7 +18,7 @@ const Item = (({ item, onClick, href, addToCartClick }, ref) => {
   return (
     <div
       id="card-item"
-      className="w-item d-inline-block position-relative border-item bg-white"
+      className="w-item d-inline-block position-relative border-item bg-white btn-animate"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
