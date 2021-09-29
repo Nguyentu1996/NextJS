@@ -26,8 +26,8 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
     return commonService.currencyFormat(items.reduce((total, item) => total + item.quantity * item.price1Fn, 0))
   }
 
-  const totalItems = useMemo(() => totalItemsCount(orderCart.result), [orderCart.result])
-  const totalPrices = useMemo(() => totalPriceCount(orderCart.result), [orderCart.result])
+  const totalItems = useMemo(() => totalItemsCount(orderCart.result), [orderCart])
+  const totalPrices = useMemo(() => totalPriceCount(orderCart.result), [orderCart])
 
   const removeItemInCart = useCallback((event) => dispatch(removeItem(event))
   , [dispatch]) 
@@ -83,7 +83,7 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
         </div>
       </div>
         <div className={styles['cart-content']}>
-          <OrderItems items={orderCart?.result} onClick={removeItemInCart}/>
+          <OrderItems items={orderCart?.result} height={80} onClick={removeItemInCart}/>
         </div>
     </div>
   );

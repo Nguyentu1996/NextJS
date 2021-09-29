@@ -366,5 +366,5 @@ object-fit: cover;
     color: var(--bs-orange-300);
 }
 .btn-animate:active {
-    transform: translateY(1px);
+    transform: translateY(0.5px);
 } 

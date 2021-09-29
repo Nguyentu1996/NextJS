@@ -9,8 +9,8 @@ const INIT_STATE = {
   message: null,
   fetching: false
 }
-const addedToCar = (cart, payload) => {
-  if (cart.length > 0 && cart.find((item) => payload.itemCdFv === item.itemCdFv)) {
+const addedToCar = (cart = [], payload) => {
+  if (cart && cart.length > 0 && cart.find((item) => payload.itemCdFv === item.itemCdFv)) {
     return cart.map(item => {
       if(item.itemCdFv === payload.itemCdFv) {
         item.quantity += payload.quantity;
@@ -18,7 +18,9 @@ const addedToCar = (cart, payload) => {
       return item
     })
   } 
-  return [...cart, payload]
+  cart.splice(0, 0, payload)
+  return cart
+
 }
 
 function orderCartReducer(state = INIT_STATE, action) {

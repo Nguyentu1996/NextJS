@@ -34,6 +34,9 @@
 .h-90 {
     height: 90%;
 }
+.h-200 {
+    height: 200px;
+}
 .h-full {
     height: 100%;
 }

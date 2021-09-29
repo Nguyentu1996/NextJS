@@ -13,7 +13,7 @@ function SearchHeader(props) {
     if (items == undefined || items == null || items.length == 0) return 0;
     return items.reduce((total, item) => total + item.quantity, 0)
   }
-  const totalItems = useMemo(() => totalItemsCount(orderCart.result), [orderCart.result])
+  const totalItems = useMemo(() => totalItemsCount(orderCart.result), [orderCart])
 
   return (
     <div id="search" className="">
