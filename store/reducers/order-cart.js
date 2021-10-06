@@ -28,7 +28,7 @@ function orderCartReducer(state = INIT_STATE, action) {
     case GET_ITEM_IN_CART: 
       return {
         ...state,
-        result: action.data,
+        result: action.payload,
         message: 'loaded',
 
       }

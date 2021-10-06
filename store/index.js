@@ -37,7 +37,6 @@ function configureStore() {
   };
 
   store.runSagaTask();
-
   return store;
 }
 

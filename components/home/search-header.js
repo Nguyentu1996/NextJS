@@ -8,7 +8,7 @@ import ActiveLink from '../active-link/active-link'
 // eslint-disable-next-line no-unused-vars
 function SearchHeader(props) {
   const { orderCart } = useSelector((state) => state)
-
+  
   const totalItemsCount = (items) => {
     if (items == undefined || items == null || items.length == 0) return 0;
     return items.reduce((total, item) => total + item.quantity, 0)

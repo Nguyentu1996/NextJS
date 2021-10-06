@@ -4,7 +4,8 @@ export const fetchWrapper = {
     get,
     post,
     put,
-    delete: _delete
+    delete: _delete,
+    fetcherSWR
 };
 
 function get(url) {
@@ -15,6 +16,15 @@ function get(url) {
 }
 
 function post(url, body) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+    };
+    return fetch(url, requestOptions).then(handleResponse)
+}
+
+function fetcherSWR(url, body) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,10 +53,14 @@ function _delete(url) {
 // helper functions
 
 async function handleResponse(response) {
-    if(!Object.keys(response).length){
-        return []
-    }
     const res = await response.json()
+
+    // if(!Object.keys(response).length){
+    //     return []
+    // }
+    // const res = await response.json()
+
+
     if (res.fatalError && res.fatalError.length > 0 || res.nomalError && res.nomalError.length > 0) {
         return []
     }

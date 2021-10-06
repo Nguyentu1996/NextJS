@@ -1,21 +1,19 @@
-import React, { createRef, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { useSelector } from "react-redux";
+import { commonService } from '../../services/common-service';
+import ActiveLink from "../active-link/active-link";
 import Icons from "../coreui/icons";
 import MyImage from "../coreui/image/image";
-import { commonService } from '../../services/common-service'
-import styles from './order-cart.module.css'
-import OrderItems from "../order-items/order-items"
-import { useDispatch } from "react-redux";
-import { removeItem } from '../../store/actions/order-cart'
-import ActiveLink from "../active-link/active-link";
+import OrderItems from "../order-items/order-items";
+import styles from './order-cart.module.css';
 
 function OrderCart({ children, onSlideClose, isSlideVisible }) {
   const [isBrowser, setIsBrowser] = useState(false)
   const { orderCart } = useSelector((state) => state)
-  const dispatch = useDispatch()
   const closeRef = useRef()
   closeRef.current = onSlideClose
+
   const totalItemsCount = (items) => {
     if (items == undefined || items == null || items.length == 0) return 0;
     return items.reduce((total, item) => total + item.quantity, 0)
@@ -28,13 +26,6 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
 
   const totalItems = useMemo(() => totalItemsCount(orderCart.result), [orderCart])
   const totalPrices = useMemo(() => totalPriceCount(orderCart.result), [orderCart])
-
-  const removeItemInCart = useCallback((event) => dispatch(removeItem(event))
-  , [dispatch]) 
-  // const removeItem = (item) = 
-  // if(orderCart.result && orderCart.result.length > 0) {
-  //   dispatch(getItemInCart(orderCart.result.map(item => item.itemCdFv)))
-  // }
 
   useEffect(() => {
     setIsBrowser(true);
@@ -74,17 +65,17 @@ function OrderCart({ children, onSlideClose, isSlideVisible }) {
             <p className={styles['subtotal']} >
               <b>Card subtotal </b>({totalItems} {totalItems > 1 ? 'items' : 'item'}):
               <span className="text-orange-300 ps-2">{totalPrices}</span>
-            </p>  
+            </p>
             <div className="d-flex py-1">
-               <ActiveLink className="border-0 me-3 text-orange-300 px-3 py-1 bg-orange-100 btn-animate" href={'/shopping-cart'} >Cart </ActiveLink>
+              <ActiveLink className="border-0 me-3 text-orange-300 px-3 py-1 bg-orange-100 btn-animate" href={'/shopping-cart'} >Cart </ActiveLink>
               <button className="bg-orange-300 text-white border-0 px-3 py-1"> Process Checkout ({totalItems} {totalItems > 1 ? 'items' : 'item'}) </button>
             </div>
           </div>
         </div>
       </div>
-        <div className={styles['cart-content']}>
-          <OrderItems items={orderCart?.result} height={80} onClick={removeItemInCart}/>
-        </div>
+      <div className={styles['cart-content']}>
+        <OrderItems items={orderCart?.result} height={80} />
+      </div>
     </div>
   );
 

@@ -2,7 +2,8 @@ import { CContainer } from '@coreui/react'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux"
 import Overlay from '../components/coreui/overlay/overlay'
 import Section from '../components/coreui/section/section'
 import Tabs from '../components/coreui/tabs/tabs'
@@ -14,13 +15,25 @@ import OrderCart from '../components/order-card/order-cart'
 import SlickSlider from '../components/slick-slider/slick-slider'
 import nextI18NextConfig from '../next-i18next.config'
 import { productService } from '../services/product-service'
-
+import { getItemInCart } from '../store/actions/order-cart'
 
 function Home(props) {
   const { t } = useTranslation('common');
   const { isSlideVisible, toggleOrderCart } = useOrderCart()
   const toggle = useCallback((e) => toggleOrderCart(e), [toggleOrderCart])
+  const dispatch = useDispatch()
+  const {orderCart} = useSelector(state => state)
 
+  useEffect(() => {
+    const cartItems = []
+    props.productAll.map(item => {
+      let result = orderCart.result.find(orderItem => item.itemCdFv === orderItem.itemCdFv)
+      if (result) {
+        cartItems.push({ ...item, quantity: result.quantity })
+      }
+    })
+    dispatch(getItemInCart(cartItems))
+  }, [t])
   return (
     <>
       <Head>
@@ -66,8 +79,8 @@ export async function getStaticProps(context) {
     productService.getDynamicBanner(),
     productService.getBannerImage1(),
     productService.getBannerImage2()
-
   ])
+
   return {
     props: {
       productAll,
@@ -82,6 +95,5 @@ export async function getStaticProps(context) {
     revalidate: 60
   }
 }
-
 
 export default Home

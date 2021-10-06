@@ -6,6 +6,8 @@ export default function sagaHelper({ api }) {
     // const requestType = `${type}_REQUEST`
     // const successType = `${type}_SUCCESS`
     // const failureType = `${type}_FAILURE`
+  
+    console.log("type", type)
     try {
       // yield put({ type: type, payload: data })
       let result = yield call(api, payload)

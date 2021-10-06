@@ -6,6 +6,7 @@ function ActiveLink({ className, children, href }) {
   const handleClick = (e) => {
     e.preventDefault()
     router.push(href)
+    document.body.style.overflow = 'auto'
   }
 
   return (

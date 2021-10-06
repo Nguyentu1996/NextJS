@@ -1,14 +1,14 @@
 import Image from "next/image";
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from "react";
-import { apiUrl } from '../../../config';
+import { apiUrl, domain } from '../../../config';
 import notfoundImg from '../../../public/images/image-not-found.png';
 
 const myLoader = ({ src, width, quality }) => {
   if (src == undefined || src == null) {
     return notfoundImg
   }
-  return `${apiUrl}/File/${src}?w=${width}&q=${quality || 75}`
+  return `${domain}/File/${src}?w=${width}&q=${quality || 75}`
 }
 
 function MyImage(props) {

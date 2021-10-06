@@ -14,3 +14,7 @@ export { FaFacebookMessenger } from 'react-icons/fa'
 export { FaTwitterSquare } from 'react-icons/fa'
 export { AiFillCheckCircle } from 'react-icons/ai'
 export { IoClose } from 'react-icons/io5'
+export { HiOutlineMinusCircle } from 'react-icons/hi'
+export { FiPlusCircle } from 'react-icons/fi'
+export { FiMinusCircle } from 'react-icons/fi'
+

@@ -48,8 +48,8 @@ export async function getInitialProps({ Component, ctx }) {
   };
 }
 
-
-export default wrapper.withRedux(appWithTranslation(MyApp, nextI18NextConfig))
+const App = appWithTranslation(MyApp, nextI18NextConfig)
+export default wrapper.withRedux(App)
 /* <button
     value={language === 'en' ? 'da' : 'en'}
     onClick={(e) => {

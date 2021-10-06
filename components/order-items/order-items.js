@@ -2,7 +2,7 @@ import MyImage from "../coreui/image/image"
 import { commonService } from '../../services/common-service'
 import Link from 'next/link'
 
-function OrderItems({ items = [], height , width = height, onClick }) {
+function OrderItems({ items = [], height , width = height }) {
   return (
     <div className="order-items text-dark">
       <div className="overflow-auto cart h-full px-2 py-1">

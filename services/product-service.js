@@ -11,7 +11,8 @@ export const productService = {
     getHotSellProduct,
     getBannerImage1,
     getBannerImage2,
-    getItemById
+    getItemById,
+    getRelativeItems
 
 };
 const baseUrl = `${apiUrl}/ExecuteQuery`;
@@ -93,8 +94,21 @@ function getBannerImage2() {
 function getItemById(ids) {
     const body = {
         access: access , 
-        queryId: 'get_hotdeal_product' ,
-        bindVariables: []
+        queryId: 'shoppingCart/get_products_by_id' ,
+        bindVariables: [ids]
     }
-    return fetchWrapper.post(baseUrl, body)
+    return fetchWrapper.fetcherSWR(`${apiUrl}/getListItemByIds`, body)
+}
+
+async function getRelativeItems(ids) {
+    if(ids) {
+        ids = ids.split(',')
+    }
+    const body = {
+        access: access , 
+        queryId: 'shoppingCart/get_products_by_id' ,
+        bindVariables: ids ? ids : []
+    }
+    return fetchWrapper.fetcherSWR(`${apiUrl}/getListItemByIds`, body)
+     
 }
