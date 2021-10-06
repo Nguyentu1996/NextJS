@@ -6,9 +6,9 @@ module.exports = {
     domains: ['https://qrcodehaugiang.com.vn:8080/thuongmainongsan'],
   },
   i18n,
-  httpAgentOptions: {
-    keepAlive: false
-  }
+  // httpAgentOptions: {
+  //   // keepAlive: false
+  // }
   // async rewrites() {
   //   return [
   //     // { source: "/:locales(en|vn)?/posts/post", destination: "/posts/post" },

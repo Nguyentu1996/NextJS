@@ -16,6 +16,7 @@ import Breadcrumb from "../components/coreui/breadcrumb/breabcrumb";
 // you can fetch all products from a database.
 export async function getStaticPaths() {
   const products = await productService.getAllProduct()
+  
   const paths = products.map((product) => ({
     params: { slug: product.slugUrlFv }
   }))
