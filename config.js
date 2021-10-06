@@ -1,4 +1,4 @@
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const domain = "https://qrcodehaugiang.com.vn:8080/thuongmainongsan"
 
 const apiUrl = process.env.NODE_ENV === 'development' 
