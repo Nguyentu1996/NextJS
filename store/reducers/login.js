@@ -2,23 +2,22 @@ import { TYPES } from '../actions'
 
 const INIT_STATE = {
   result: null,
-  success: null,
   message: null,
-  fetching: false
 }
 function loginReducer(state = INIT_STATE, action) {
   switch (action.type) {
+    
     case TYPES.LOGIN_REQUEST:
       return {
         ...state,
-        fetching: true
+        message: null,
       }
     case TYPES.LOGIN_SUCCESS:
+      console.log(action);
       return {
         ...state,
-        result: action.data.result,
-        success: action.data.success,
-        message: action.data.message
+        result: action.data.login,
+        message: 'Login successful'
       }
     case TYPES.LOGIN_FAILURE:
       return {

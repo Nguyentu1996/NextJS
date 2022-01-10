@@ -53,15 +53,14 @@ function _delete(url) {
 // helper functions
 
 async function handleResponse(response) {
-    const res = await response.json()
+    // const res = await response.json()
 
     // if(!Object.keys(response).length){
     //     return []
     // }
-    // const res = await response.json()
+    const res = await response.json()
 
-
-    if (res.fatalError && res.fatalError.length > 0 || res.nomalError && res.nomalError.length > 0) {
+    if (res.fatalError && res.fatalError.length > 0 || res.normalError && res.normalError.length > 0) {
         return []
     }
     let result = [];

@@ -1,15 +1,13 @@
 import { apiUrl, access } from '../config';
-import { fetchWrapper } from '../helpers';
 
 export const loginService = {
     login
 };
-const baseUrl = `${apiUrl}/ExecuteQuery`;
-function login (payload) {
-    const body = {
-        access: access , 
-        queryId: 'home/get_highlight_product' ,
-        bindVariables: []
-    }
-    return fetchWrapper.post(baseUrl, body)
+const baseUrl = `${apiUrl}/Login`;
+const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' }
+};
+function login(payload) {
+    return fetch(baseUrl, {...requestOptions, body: JSON.stringify(payload)}).then(response => response.json())
 }

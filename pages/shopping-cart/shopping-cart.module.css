@@ -1,0 +1,12 @@
+.cart-right {
+    min-width: 400px;
+    padding: 16px;
+    height: 120px;
+    background-color: #fff;
+}
+.cart-left {
+    min-width: 750px;
+}
+.relative-item {
+    height: 100%; 
+}

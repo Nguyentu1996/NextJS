@@ -37,7 +37,7 @@ const Item = (({ item, onClick, href, addToCartClick }, ref) => {
           className="text-decoration-none d-block"
         >
 
-          <div className="w-100">
+          <div className="w-100" style={{color: 'orange'}}>
             <Icons.HiStar />
             <Icons.HiStar />
             <Icons.HiStar />
@@ -65,8 +65,8 @@ const Item = (({ item, onClick, href, addToCartClick }, ref) => {
         {
           !inHover === false
           && (
-            <div id="like" className="position-absolute top-0 start-0 w-30 bg-orange fs-13 text-white px-1">
-              <span> Yêu thích</span>
+            <div id="like" className="position-absolute top-0 start-0 bg-orange fs-13 text-white px-1">
+              <span > Yêu thích</span>
             </div>
           )
         }

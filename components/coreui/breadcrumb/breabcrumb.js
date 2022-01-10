@@ -5,8 +5,9 @@ import Icons from '../icons'
 
 function Breadcrumb({ menu }) {
   return (
-    <CContainer lg className="h-2 d-flex align-items-center">
-      <Link href="/" passHref className="text-decoration-none link text-dark">Home</Link>  
+    <CContainer lg className="d-flex align-items-center h-3">
+      
+      <Link href="/" passHref className="text-decoration-none link text-dark a-color-link-hover">Home</Link>  
       <span className="px-2"><Icons.BsChevronRight /></span>
       <span className="px-2 ">{menu}</span>
     </CContainer>

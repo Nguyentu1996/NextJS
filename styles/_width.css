@@ -40,8 +40,13 @@
   .w-px-5 {
     width: 5rem !important;
   }
+  .w-px-4 {
+    width: 4rem !important;
+  }
   .m-w-app {
-      min-width: 950px;
+      /* min-width: 950px; */
+      min-width: 1080px;
+
   }
   .m-w-full {
     min-width: 100%;

@@ -6,6 +6,8 @@ module.exports = {
     domains: ['https://qrcodehaugiang.com.vn:8080/thuongmainongsan'],
   },
   i18n,
+  // useFileSystemPublicRoutes: false,
+
   // httpAgentOptions: {
   //   // keepAlive: false
   // }

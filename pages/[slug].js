@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config'
 import { domain } from '../config';
 import Breadcrumb from "../components/coreui/breadcrumb/breabcrumb";
+import { useDispatch } from "react-redux";
 
 // In getStaticPaths(), you need to return the list of
 // ids of product pages (/products/[id]) that you’d
@@ -23,7 +24,7 @@ export async function getStaticPaths() {
 
   // fallback: false means pages that don’t have the
   // correct id will 404.
-  return { paths, fallback: true }
+  return { paths, fallback: false }
 }
 
 // params will contain the id for each generated page.
@@ -44,8 +45,8 @@ export default function Product({ product, images }) {
   const router = useRouter()
   if (router.isFallback) {
     return <div>Loading...</div>
-  }
-  
+  }  
+
     // Render product
     return (
       <>

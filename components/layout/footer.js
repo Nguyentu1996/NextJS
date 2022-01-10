@@ -1,9 +1,11 @@
 import { CCol, CRow, CContainer } from '@coreui/react'
 import Image from 'next/image'
+import { withRouter } from 'next/router'
 
 
-function Footer() {
+function Footer({router}) {
   return (
+    router.pathname !== '/login' &&
     <div id="footer" className="bg-secondary-300">
       <CContainer lg className="pt-5">
         <CRow>
@@ -53,4 +55,4 @@ function Footer() {
   )
 }
 
-export default Footer
+export default withRouter(Footer)

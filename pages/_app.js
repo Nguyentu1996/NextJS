@@ -14,17 +14,31 @@ import Layout from '../components/layout/layout.js'
 import Device from '../components/device'
 
 import { wrapper } from "../store/";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 
 function MyApp({ Component, pageProps }) {
   const store = useStore()
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleChanges = (url, { shallow }) => {
+      document.body.style.overflow = 'auto'
+    }
+    router.events.on('routeChangeComplete', handleChanges)
+    return () => {
+      router.events.off('routeChangeComplete', handleChanges)
+    }
+  }, [])
+
   return (
     <Device >
       {({ isMobile }) =>
         <Layout isMobile={isMobile}>
           <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
             <main>
-              <Component {...pageProps} />
+              <Component {...pageProps } />
             </main>
           </PersistGate>
         </Layout>
@@ -48,8 +62,7 @@ export async function getInitialProps({ Component, ctx }) {
   };
 }
 
-const App = appWithTranslation(MyApp, nextI18NextConfig)
-export default wrapper.withRedux(App)
+export default wrapper.withRedux(appWithTranslation(MyApp, nextI18NextConfig))
 /* <button
     value={language === 'en' ? 'da' : 'en'}
     onClick={(e) => {

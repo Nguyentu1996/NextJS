@@ -33,7 +33,7 @@ function Home(props) {
       }
     })
     dispatch(getItemInCart(cartItems))
-  }, [t])
+  }, [t, props.productAll])
   return (
     <>
       <Head>

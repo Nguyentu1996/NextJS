@@ -12,8 +12,8 @@ export const productService = {
     getBannerImage1,
     getBannerImage2,
     getItemById,
-    getRelativeItems
-
+    getRelativeItems,
+    getSuggestItem
 };
 const baseUrl = `${apiUrl}/ExecuteQuery`;
 
@@ -111,4 +111,12 @@ async function getRelativeItems(ids) {
     }
     return fetchWrapper.fetcherSWR(`${apiUrl}/getListItemByIds`, body)
      
+}
+function getSuggestItem(key) {
+    const body = {
+        access: access , 
+        queryId: 'shoppingCart/get_suggest_product' ,
+        bindVariables: []
+    }
+    return fetchWrapper.post(baseUrl, body)
 }
